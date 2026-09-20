@@ -34,7 +34,7 @@ pipeline {
                 """
                 dir("/opt/tomcat/webapps/"){
                     sh """
-                        cp /opt/tomcat/webapps/java-tomcat-maven-example/* ROOT/
+                        cp -r /opt/tomcat/webapps/java-tomcat-maven-example/* ROOT/
                     """
                 }
                 
