@@ -30,8 +30,21 @@ pipeline {
                 echo "deploy stage"
                 sh """
                     cp /home/ubuntu/jenkins/workspace/sample/target/*.war /opt/tomcat/webapps/
+
                 """
+                dir("/opt/tomcat/webapps/"){
+                    sh """
+                        cp /opt/tomcat/webapps/java-tomcat-maven-example/* ROOT/
+                    """
+                }
                 
+
+            }
+        }
+        stage("cleanup") {
+            steps {
+                echo "cleanup stage"
+                sh "rm -rf /opt/tomcat/webapps/java-tomcat-maven-example*"
             }
         }
     }
